@@ -1,0 +1,22 @@
+.para{
+    color: white;
+    font-size: 2rem;
+    border-bottom: .2rem solid #242731;
+    height: 6%;
+}
+
+.section__container{
+    display: flex;
+    height: 93.5%;
+    &_todos{
+
+        color: white;
+        flex-grow: 4;
+    }
+
+    &_edit{
+        color: white;
+        flex-grow: 1;
+        border-left: .2rem solid #242731;
+    }
+}
