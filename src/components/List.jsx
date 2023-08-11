@@ -1,26 +1,26 @@
 import listSCSS from './styles/List.module.scss';
-import addSvg from '../assets/plus.svg';
-import Todocard from './Todocard';
+import {Todocard} from './Todocard';
+import Todotitle from './Todotitle';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setListCard, setListTitle } from '../redux/cards';
 
 function List(){
-    const [card, setCard] = useState([])
-
-    function handleClick(){
-        setCard([...card, <Todocard key={card.length} />])
-
-    }
+    const { listcard,listtitle } = useSelector(state => state.card);
+    // console.log(listcard)
+    const dispatch = useDispatch();
     
+    // console.log(listtitle)
+
     return (
-        <div className={listSCSS.listcontainer}>
-            <input type="text" placeholder='Add Todo-List' className={listSCSS.listcontainer__addTodo} />
-            <img src={addSvg} alt="add" className={listSCSS.listcontainer__addIcon} onClick={handleClick} />
-            
-            {card.map((each) => {
-                return each;
-                })
-            }
+    <div className={listSCSS.wrapper}>
+        <div className={listSCSS.wrapper__column}>
+            <Todotitle />
+            {/* {listtitle.map((each,key) => <Todotitle key={key} />)} */}
         </div>
+
+            {/* <Todocard /> */}
+    </div>
     )
 }
 
