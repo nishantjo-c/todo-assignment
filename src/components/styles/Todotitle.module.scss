@@ -29,6 +29,10 @@
         right: 0rem;
         top: 1rem;
         width: 3rem;
+        transition: all .2s;
+        &:hover{
+            background-color: aliceblue;
+        }
         
 
         // background-image: linear-gradient(to right, white, white);

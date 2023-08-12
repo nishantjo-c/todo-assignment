@@ -9,7 +9,7 @@ export default function Todotitle({ list }) {
 
   const { listcards } = list;
 
-  console.log(listcards);
+  // console.log(listcards);
 
   return (
     <div className={todotitleSCSS.listcontainer}>

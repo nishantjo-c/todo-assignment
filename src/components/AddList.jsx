@@ -11,6 +11,8 @@ export default function AddList() {
   const { lists } = useSelector((state) => state.card);
   const titleRef = useRef();
 
+  // console.log(lists);
+
   function handleClick() {
     console.log(title);
     dispatch(createList(title));

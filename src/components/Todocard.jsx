@@ -1,7 +1,9 @@
 import todocardSCSS from "./styles/Todocard.module.scss";
 import addSvg from "../assets/plus.svg";
+import editSvg from "../assets/editSvg.svg";
+import profileSvg from "../assets/profileSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { createCard } from "../redux/cards";
+import { createCard, setCardID, setListID } from "../redux/cards";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 
@@ -48,17 +50,38 @@ export function Todocard({ list }) {
   );
 }
 
-export function Card({ title, description, setVisible, card }) {
+export function Card({
+  title,
+  description,
+  setVisible,
+  card,
+  list,
+  setTitlePlaceholder,
+  setDescriptionPlaceholder,
+}) {
+  const { cardID, listID } = useSelector((state) => state.card);
+
+  const dispatch = useDispatch();
+  // console.log(title, description);
+
   return (
     <div className={todocardSCSS.card}>
-      <p className={todocardSCSS.card__title}>{card.title}</p>
+      <div className={todocardSCSS.card__flexedheader}>
+        <img src={profileSvg} alt="add" />
+        <p className={todocardSCSS.card__title}>{card.title}</p>
 
-      <img
-        src={addSvg}
-        alt="add"
-        className={todocardSCSS.card__addIcon}
-        onClick={() => {}}
-      />
+        <img
+          src={editSvg}
+          alt="add"
+          className={todocardSCSS.card__editIcon}
+          onClick={() => {
+            dispatch(setCardID(card.id));
+            dispatch(setListID(list.id));
+            setTitlePlaceholder(card.title);
+            setDescriptionPlaceholder(card.description);
+          }}
+        />
+      </div>
 
       <p className={todocardSCSS.card__description}>{card.description}</p>
     </div>

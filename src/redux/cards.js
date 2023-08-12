@@ -10,7 +10,10 @@ export const counterSlice = createSlice({
       //   id: nanoid(),
       // },
     ],
+    cardID: "",
+    listID: "",
   },
+
   reducers: {
     createCard: (state, action) => {
       const { title, description, listId } = action.payload;
@@ -49,10 +52,39 @@ export const counterSlice = createSlice({
       // console.log();
     },
     updateList: (state, action) => {},
-    updateCard: (state, action) => {},
+    updateCard: (state, action) => {
+      const { title, description, listID, cardID } = action.payload;
+
+      state.lists.map((list) => {
+        if (list.id === listID) {
+          console.log("ok");
+          const newcard = list.listcards.map((card) => {
+            if (card.id === cardID) {
+              console.log("ok");
+              card.title = title;
+              card.description = description;
+            }
+          });
+        }
+      });
+    },
+    setCardID: (state, action) => {
+      state.cardID = action.payload;
+      console.log(action.payload);
+    },
+    setListID: (state, action) => {
+      state.listID = action.payload;
+      console.log(action.payload);
+    },
   },
 });
 
-export const { createList, createCard, updateList, updateCard } =
-  counterSlice.actions;
+export const {
+  createList,
+  createCard,
+  updateList,
+  updateCard,
+  setCardID,
+  setListID,
+} = counterSlice.actions;
 export default counterSlice.reducer;
