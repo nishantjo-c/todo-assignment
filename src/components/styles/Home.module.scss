@@ -7,11 +7,14 @@
     
 
     &__navigation{
-        flex-grow: 1;
+        // flex-grow: 1;
         border-right: solid .2rem #242731;
+        width: 20%;
     }
 
     &__todos{
-        flex-grow: 5;
+        // flex-grow: 5;
+        // width: 100%;
+        width: 80%;
     }
 }

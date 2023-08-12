@@ -8,15 +8,28 @@
 .section__container{
     display: flex;
     height: 93.5%;
+    // width: 100%;
+    overflow: hidden;
+    
+
     &_todos{
         display: flex;
         color: white;
-        flex-grow: 4;
+        // flex-grow: 4;
+        width: 80%;
+        z-index: 100;
+        // background-color: pink;
+        overflow-x: scroll;
+        
     }
-
+    &_eachList{
+        // overflow-x: scroll;
+    }
+    
     &_edit{
         color: white;
-        flex-grow: 1;
+        // flex-grow: 1;
         border-left: .2rem solid #242731;
+        width: 20%;
     }
 }

@@ -1,5 +1,13 @@
 .wrapper{
     &__column{
-        display: flex;
+        // display: flex;
+        
     }
+    &__row{
+        margin-left: 1rem;
+    }
+    overflow: hidden;
+    overflow-y: scroll;
+    
+    
 }

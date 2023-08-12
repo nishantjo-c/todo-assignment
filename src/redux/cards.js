@@ -3,8 +3,6 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 export const counterSlice = createSlice({
   name: "card",
   initialState: {
-    listcard: [],
-    listtitle: [],
     lists: [
       // {
       //   title: "list1",
@@ -14,16 +12,6 @@ export const counterSlice = createSlice({
     ],
   },
   reducers: {
-    setListCard: (state, action) => {
-      state.listcard = action.payload;
-      // console.log(action.payload)
-    },
-
-    setListTitle: (state, action) => {
-      state.listtitle = action.payload;
-      // console.log(...state.listtitle, action.payload)
-    },
-
     createCard: (state, action) => {
       const { title, description, listId } = action.payload;
       const card = {
@@ -65,12 +53,6 @@ export const counterSlice = createSlice({
   },
 });
 
-export const {
-  setListCard,
-  setListTitle,
-  createList,
-  createCard,
-  updateList,
-  updateCard,
-} = counterSlice.actions;
+export const { createList, createCard, updateList, updateCard } =
+  counterSlice.actions;
 export default counterSlice.reducer;

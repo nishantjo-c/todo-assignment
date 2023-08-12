@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import AddList from "./AddList";
 
 function Todos() {
-  const { listtitle, lists } = useSelector((state) => state.card);
+  const { lists } = useSelector((state) => state.card);
   console.log(lists);
   return (
     <>
@@ -13,15 +13,12 @@ function Todos() {
 
       <div className={todosSCSS.section__container}>
         <div className={todosSCSS.section__container_todos}>
-          {lists.map((list) => (
-            <List key={list.id} list={list} />
+          {lists.map((list, index) => (
+            <div className={todosSCSS.section__container_eachList} key={index}>
+              <List key={list.id} list={list} />
+            </div>
           ))}
           <AddList />
-
-          {/* <List />
-          {listtitle.map((each, key) => (
-            <List key={key} />
-          ))} */}
         </div>
         <div className={todosSCSS.section__container_edit}>edit toto</div>
       </div>

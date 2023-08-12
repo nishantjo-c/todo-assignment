@@ -1,18 +1,21 @@
 import todotitleSCSS from "./styles/Todotitle.module.scss";
 import addSvg from "../assets/plus.svg";
 import { useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { createList } from "../redux/cards";
+import { useRef } from "react";
 
 export default function AddList() {
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
   const { lists } = useSelector((state) => state.card);
+  const titleRef = useRef();
 
   function handleClick() {
     console.log(title);
     dispatch(createList(title));
+    setTitle("");
+    titleRef.current.value = "";
   }
 
   return (
@@ -23,6 +26,7 @@ export default function AddList() {
         onChange={(e) => {
           setTitle(e.target.value);
         }}
+        ref={titleRef}
       />
 
       <img
@@ -32,7 +36,6 @@ export default function AddList() {
         type="button"
         onClick={(e) => {
           handleClick(e);
-          // dispatch(setListCard([...listcard, <Todocard key={listcard.length} />]))
         }}
       />
     </div>

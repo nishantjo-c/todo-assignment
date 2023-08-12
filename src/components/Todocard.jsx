@@ -1,22 +1,23 @@
 import todocardSCSS from "./styles/Todocard.module.scss";
 import addSvg from "../assets/plus.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setListCard, setListTitle, createCard } from "../redux/cards";
+import { createCard } from "../redux/cards";
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 
-export function Todocard({ setVisible, list }) {
+export function Todocard({ list }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
   const dispatch = useDispatch();
-  const { listcard, listtitle } = useSelector((state) => state.card);
+  const inputTitle = useRef();
+  const inputDescription = useRef();
 
-  // function handleClick(){
-  //     console.log(listcard)
-  // }
-  useEffect(() => {
-    console.log(listtitle[0]);
-  }, [listtitle]);
+  function handleClick() {
+    setTitle("");
+    setDescription("");
+    inputTitle.current.value = "";
+    inputDescription.current.value = "";
+  }
 
   return (
     <div className={todocardSCSS.card}>
@@ -25,6 +26,7 @@ export function Todocard({ setVisible, list }) {
         placeholder="Add Todo"
         className={todocardSCSS.card__title}
         onChange={(e) => setTitle(e.target.value)}
+        ref={inputTitle}
       />
       <img
         src={addSvg}
@@ -32,16 +34,7 @@ export function Todocard({ setVisible, list }) {
         className={todocardSCSS.card__addIcon}
         onClick={() => {
           dispatch(createCard({ title, description, listId: list.id }));
-          // dispatch(
-          //   setListCard([
-          //     ...listcard,
-          //     { title: title, description: description },
-          //   ])
-          // );
-          // dispatch(setListTitle([{...listtitle[0],data: {title: title, description: description}}]));
-          // console.log(listtitle[0])
-          // setVisible(false);
-          // handleClick();
+          handleClick();
         }}
       />
       <input
@@ -49,6 +42,7 @@ export function Todocard({ setVisible, list }) {
         placeholder="Add Todo Description"
         className={todocardSCSS.card__description}
         onChange={(e) => setDescription(e.target.value)}
+        ref={inputDescription}
       />
     </div>
   );
@@ -63,10 +57,7 @@ export function Card({ title, description, setVisible, card }) {
         src={addSvg}
         alt="add"
         className={todocardSCSS.card__addIcon}
-        onClick={() => {
-          // setVisible(true);
-          // console.log()
-        }}
+        onClick={() => {}}
       />
 
       <p className={todocardSCSS.card__description}>{card.description}</p>
