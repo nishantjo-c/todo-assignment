@@ -42,7 +42,7 @@
             background-color: aliceblue;
         }
     }
-    &__editIcon{
+    &__editIcon,&__trashIcon{
         
         position: absolute;
         right: 1rem;
@@ -52,6 +52,9 @@
         &:hover{
             transform: scale(1.4);
         }
+    }
+    &__trashIcon{
+        right: 3.5rem;
     }
 
     &__title{

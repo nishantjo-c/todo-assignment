@@ -2,8 +2,9 @@ import todocardSCSS from "./styles/Todocard.module.scss";
 import addSvg from "../assets/plus.svg";
 import editSvg from "../assets/editSvg.svg";
 import profileSvg from "../assets/profileSvg.svg";
+import trashSvg from "../assets/trashSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { createCard, setCardID, setListID } from "../redux/cards";
+import { createCard, setCardID, setListID, deleteCard } from "../redux/cards";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 
@@ -69,6 +70,17 @@ export function Card({
       <div className={todocardSCSS.card__flexedheader}>
         <img src={profileSvg} alt="add" />
         <p className={todocardSCSS.card__title}>{card.title}</p>
+        <img
+          src={trashSvg}
+          alt="trash"
+          className={todocardSCSS.card__trashIcon}
+          onClick={() => {
+            // console.log(card.id, " ", list.id);
+            dispatch(setCardID(card.id));
+            dispatch(setListID(list.id));
+            dispatch(deleteCard());
+          }}
+        />
 
         <img
           src={editSvg}
