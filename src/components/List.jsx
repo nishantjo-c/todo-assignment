@@ -1,9 +1,8 @@
 import listSCSS from "./styles/List.module.scss";
-import { Todocard } from "./Todocard";
+import { Todocard, Card } from "./Todocard";
 import Todotitle from "./Todotitle";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card } from "./Todocard";
 
 function List({
   list,

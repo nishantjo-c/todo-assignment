@@ -7,7 +7,7 @@
     background-color: rgba(36, 39, 49, 1);
     border-radius: 1rem;
     position: relative;
-
+    // display: flex;
     
     &__addTodo{
         height: 5rem;
@@ -40,5 +40,16 @@
         // color: transparent;
         // background-color: white;
 
+    }
+
+    &__trashicon{
+        width: 2rem;
+        position: absolute;
+        right: 0rem;
+        top: 1.5rem;
+        transition: all .2s;
+        &:hover{
+            transform: scale(1.2);
+        }
     }
 }

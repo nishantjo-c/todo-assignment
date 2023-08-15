@@ -51,7 +51,14 @@ export const counterSlice = createSlice({
       state.lists.push(list);
       // console.log();
     },
-    updateList: (state, action) => {},
+    updateList: (state, action) => {
+      // console.log(action.payload);
+      state.lists.map((list) => {
+        if (list.id === action.payload.id) {
+          list.title = action.payload.title;
+        }
+      });
+    },
     updateCard: (state, action) => {
       const { title, description, listID, cardID } = action.payload;
 
@@ -69,9 +76,16 @@ export const counterSlice = createSlice({
       });
     },
 
+    deleteList: (state, action) => {
+      // console.log(action.payload);
+      state.lists = state.lists.filter((list) => {
+        return list.id !== action.payload;
+      });
+    },
+
     deleteCard: (state, action) => {
       // const { listID, cardID } = action.payload;
-      console.log(state.listID, state.cardID);
+      // console.log(state.listID, state.cardID);
       state.lists.map((list) => {
         if (list.id === state.listID) {
           list.listcards = list.listcards.filter((card) => {
@@ -98,6 +112,7 @@ export const {
   updateCard,
   setCardID,
   setListID,
+  deleteList,
   deleteCard,
 } = counterSlice.actions;
 export default counterSlice.reducer;
